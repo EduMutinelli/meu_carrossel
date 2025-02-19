@@ -18,9 +18,9 @@ body {
 
 .instruction{
 	position: absolute;
-	font-size: 1.2rem;
+	font-size: 1.0rem;
 	color: rgba(255, 0, 0, 0.554);
-	top: 36%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
