@@ -18,26 +18,12 @@ body {
 
 .instruction{
 	position: absolute;
-	font-size: 1.6rem;
+	font-size: 1.2rem;
 	color: rgba(255, 0, 0, 0.554);
-	max-width: 100%; /* Não ultrapassa a largura do container */
-    padding: 10px;
-    word-wrap: break-word; /* Quebra palavras longas */
+	top: 36%;
+	left: 50%;
 	transform: translate(-50%, -50%);
 }
-
-/* Ajustes para telas menores */
-@media (max-width: 768px) {
-    .instruction {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .instruction {
-      font-size: 0.9rem;
-    }
-  }
 
 .container {
 	position: relative;
