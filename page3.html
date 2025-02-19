@@ -15,29 +15,36 @@
         }
         h1 {
             color: #ff6f91;
-            font-size: 40px;
+            font-size: 2.5em;
+            margin: 20px;
         }
         p {
             color: #ff9aa2;
-            font-size: 20px;
-        }
-        #sticker {
-            margin-top: 30px;
-            width: 100px;
-            height: auto;
+            font-size: 1.2em;
+            margin: 10px;
         }
         #hello-kitty {
             margin-top: 50px;
-            width: 300px;  /* Large size for the GIF */
+            width: 80%;
+            max-width: 300px;
             height: auto;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            #hello-kitty {
+                width: 70%;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Te amo meu Amor! </h1>
-
-
+    <h1>Te amo meu Amor!</h1>
     <img id="hello-kitty" src="https://media.tenor.com/rRCSgVt0_-AAAAAi/hello-kitty.gif" alt="Hello Kitty GIF">
 </body>
 </html>
