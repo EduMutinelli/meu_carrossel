@@ -54,7 +54,8 @@
                 clickable: true,
             },
             grabCursor: true, 
-            touchEventsTarget: 'wrapper',
+            simulateTouch: true,  // Garante que o toque seja detectado
+            touchEventsTarget: 'container', // Define onde os eventos de toque serão capturados
         });
     </script>
 </body>
