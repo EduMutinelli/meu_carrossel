@@ -1,50 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Win!</title>
+    <title>Galeria Interativa</title>
     <style>
         body {
-            background: url('https://imgur.com/nVVaZgV.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Press Start 2P', cursive;
-            text-align: center;
-            padding-top: 50px;
-            color: #fff;
+            font-family: Arial, sans-serif;
+            background-color: #f9e3e3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
         h1 {
-            color: #ff6f91;
             font-size: 2.5em;
-            margin: 20px;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            text-align: center;
         }
-        p {
-            color: #ff9aa2;
+        .intro-text {
             font-size: 1.2em;
-            margin: 10px;
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 80%;
         }
-        #hello-kitty {
-            margin-top: 50px;
-            width: 80%;
+        .image-container {
+            width: 90%;
             max-width: 300px;
-            height: auto;
+            height: 200px; /* Altura fixa para todos os contêineres */
+            margin: 10px 0;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            overflow: hidden; /* Garante que nada ultrapasse o contêiner */
         }
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1em;
-            }
-            #hello-kitty {
-                width: 70%;
-            }
+        .image-container img,
+        .image-container video {
+            width: 100%;
+            height: 100%; /* Ocupa toda a altura do contêiner */
+            border-radius: 15px;
+            display: block;
+            transition: transform 0.6s, opacity 0.6s;
+            backface-visibility: hidden;
+            object-fit: cover; /* Mantém a proporção e cobre o contêiner */
+        }       
+        .image-container .text {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #d32f2f;
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2em;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+            opacity: 0;
+        }
+        .image-container.flipped img,
+        .image-container.flipped video {
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+        .image-container.flipped .text {
+            transform: rotateY(0deg);
+            opacity: 1;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Te amo meu Amor!</h1>
-    <img id="hello-kitty" src="https://media.tenor.com/rRCSgVt0_-AAAAAi/hello-kitty.gif" alt="Hello Kitty GIF">
+
+    <h1>Meu Amorzinho</h1>
+    <p class="intro-text">
+        Clique nas imagens para descobrir mensagens especiais para você. Cada imagem guarda uma surpresa!
+    </p>
+
+    <!-- Primeiro GIF -->
+    <div class="image-container">
+        <video autoplay loop muted playsinline>
+            <source src="gif01.mp4" type="video/mp4">
+        </video>
+        <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
+    </div>
+
+    <!-- Segundo GIF -->
+    <div class="image-container">
+        <video autoplay loop muted playsinline>
+            <source src="gif02.mp4" type="video/mp4">
+        </video>
+        <div class="text">Seu caráter e personalidade são únicos!</div>
+    </div>
+
+    <!-- Imagens restantes -->
+    <div class="image-container">
+        <img src="imgamor01.jpeg" alt="Imagem 1">
+        <div class="text">Seus olhos são como estrelas, iluminando tudo ao redor com um brilho único e hipnotizante.</div>
+    </div>
+
+    <div class="image-container">
+        <img src="imgamor02.jpeg" alt="Imagem 2">
+        <div class="text">Você é o detalhe que faltava na minha vida.</div>
+    </div>
+
+    <div class="image-container">
+        <img src="imgamor03.jpeg" alt="Imagem 3">
+        <div class="text">Nos seus olhos, encontrei meu lar.</div>
+    </div>
+
+    <div class="image-container">
+        <img src="imgamor04.jpeg" alt="Imagem 4">
+        <div class="text">Ser incrível parece tão natural para você.</div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.image-container').forEach(container => {
+            container.addEventListener('click', () => {
+                container.classList.toggle('flipped');
+            });
+        });
+    </script>
+
 </body>
 </html>
