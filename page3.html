@@ -137,12 +137,6 @@
                 container.classList.toggle('flipped');
             });
         });
-
-        // Ajustar a altura do iframe dinamicamente
-        window.onload = function() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
-        };
     </script>
 </body>
 </html>
