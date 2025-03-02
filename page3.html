@@ -9,18 +9,21 @@
             font-family: Arial, sans-serif;
             background-color: #f9e3e3;
             margin: 0;
-            padding: 20px; /* Adicionado padding para evitar que o conteúdo encoste nas bordas */
+            padding: 20px; /* Espaçamento interno */
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh; /* Mantém a altura mínima da tela */
+            min-height: 100vh; /* Altura mínima da tela */
+            overflow-y: auto; /* Permite rolagem vertical */
         }
+
         h1 {
             font-size: 2.5em;
             color: #d32f2f;
             margin-bottom: 10px;
             text-align: center;
         }
+
         .intro-text {
             font-size: 1.2em;
             color: #d32f2f;
@@ -28,19 +31,28 @@
             margin-bottom: 20px;
             max-width: 80%;
         }
+
+        /* Contêiner para as imagens e vídeos */
+        .content {
+            width: 100%;
+            max-width: 400px; /* Largura máxima para o conteúdo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Espaçamento entre os itens */
+        }
+
         .image-container {
-            width: 300px; /* Largura fixa */
+            width: 100%; /* Largura total do contêiner */
+            max-width: 300px; /* Largura máxima para as imagens/vídeos */
             height: 200px; /* Altura fixa */
-            margin: 10px 0;
             position: relative;
             cursor: pointer;
             perspective: 1000px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
             border-radius: 15px; /* Bordas arredondadas */
         }
+
         .image-container img,
         .image-container video {
             width: 100%;
@@ -49,8 +61,9 @@
             display: block;
             transition: transform 0.6s, opacity 0.6s;
             backface-visibility: hidden;
-            object-fit: cover; /* Garante que a imagem/video cubra o contêiner */
+            object-fit: cover; /* Garante que a imagem/vídeo cubra o contêiner */
         }
+
         .image-container .text {
             width: 100%;
             height: 100%;
@@ -71,11 +84,13 @@
             transition: transform 0.6s;
             opacity: 0;
         }
+
         .image-container.flipped img,
         .image-container.flipped video {
             transform: rotateY(180deg);
             opacity: 0;
         }
+
         .image-container.flipped .text {
             transform: rotateY(0deg);
             opacity: 1;
@@ -89,38 +104,41 @@
         Clique nas imagens para descobrir mensagens especiais para você. Cada imagem guarda uma surpresa!
     </p>
 
-    <div class="image-container">
-        <video autoplay loop muted playsinline>
-            <source src="gif01.mp4" type="video/mp4">
-        </video>
-        <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
-    </div>
+    <!-- Contêiner para as imagens e vídeos -->
+    <div class="content">
+        <div class="image-container">
+            <video autoplay loop muted playsinline>
+                <source src="gif01.mp4" type="video/mp4">
+            </video>
+            <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
+        </div>
 
-    <div class="image-container">
-        <video autoplay loop muted playsinline>
-            <source src="gif02.mp4" type="video/mp4">
-        </video>
-        <div class="text">Seu caráter e personalidade são únicos!</div>
-    </div>
+        <div class="image-container">
+            <video autoplay loop muted playsinline>
+                <source src="gif02.mp4" type="video/mp4">
+            </video>
+            <div class="text">Seu caráter e personalidade são únicos!</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor01.jpeg" alt="Imagem 1">
-        <div class="text">Seus olhos são como estrelas, iluminando tudo ao redor com um brilho único e hipnotizante.</div>
-    </div>
+        <div class="image-container">
+            <img src="imgamor01.jpeg" alt="Imagem 1">
+            <div class="text">Seus olhos são como estrelas, iluminando tudo ao redor com um brilho único e hipnotizante.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor02.jpeg" alt="Imagem 2">
-        <div class="text">Você é o detalhe que faltava na minha vida.</div>
-    </div>
+        <div class="image-container">
+            <img src="imgamor02.jpeg" alt="Imagem 2">
+            <div class="text">Você é o detalhe que faltava na minha vida.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor03.jpeg" alt="Imagem 3">
-        <div class="text">Nos seus olhos, encontrei meu lar.</div>
-    </div>
+        <div class="image-container">
+            <img src="imgamor03.jpeg" alt="Imagem 3">
+            <div class="text">Nos seus olhos, encontrei meu lar.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor04.jpeg" alt="Imagem 4">
-        <div class="text">Ser incrível parece tão natural para você.</div>
+        <div class="image-container">
+            <img src="imgamor04.jpeg" alt="Imagem 4">
+            <div class="text">Ser incrível parece tão natural para você.</div>
+        </div>
     </div>
 
     <script>
