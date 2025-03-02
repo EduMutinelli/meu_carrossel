@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             background-color: #f9e3e3;
             margin: 0;
-            padding: 0;
+            padding: 20px; /* Adicionado padding para evitar que o conteúdo encoste nas bordas */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow-y: auto;
+            justify-content: flex-start; /* Alterado para flex-start para alinhar o conteúdo no topo */
+            min-height: 100vh; /* Mantém a altura mínima da tela */
+            overflow-y: auto; /* Permite rolagem vertical */
         }
         h1 {
             font-size: 2.5em;
