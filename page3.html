@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu amorzinho eh perfeita</title>
     <style>
+        /* Resetando margens e preenchimentos */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: auto; /* Permite rolagem interna */
+            overflow: hidden; /* Impede a rolagem da página principal */
+        }
+
+        /* Contêiner da página interna */
+        .page-container {
+            height: 100%; /* Ocupa 100% da altura do carrossel */
+            overflow-y: auto; /* Permite rolagem interna */
             background-color: #f9e3e3;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px; /* Espaçamento interno */
         }
 
         h1 {
@@ -25,7 +32,7 @@
         }
 
         .intro-text {
-            font-size: 1.0em;
+            font-size: 1.2em;
             color: #d32f2f;
             text-align: center;
             margin-bottom: 20px;
@@ -33,9 +40,8 @@
         }
 
         .image-container {
-            width: 90%;
-            max-width: 300px;
-            height: 200px;
+            width: 300px; /* Largura fixa */
+            height: 200px; /* Altura fixa */
             margin: 10px 0;
             position: relative;
             cursor: pointer;
@@ -44,7 +50,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border-radius: 15px;
+            border-radius: 15px; /* Bordas arredondadas */
         }
 
         .image-container img,
@@ -55,7 +61,7 @@
             display: block;
             transition: transform 0.6s, opacity 0.6s;
             backface-visibility: hidden;
-            object-fit: cover;
+            object-fit: cover; /* Garante que a imagem/vídeo cubra o contêiner */
         }
 
         .image-container .text {
@@ -72,7 +78,7 @@
             justify-content: center;
             text-align: center;
             padding: 10px;
-            font-size: 0.8em;
+            font-size: 1em;
             transform: rotateY(180deg);
             backface-visibility: hidden;
             transition: transform 0.6s;
@@ -92,43 +98,47 @@
     </style>
 </head>
 <body>
-    <h1>Meu Amorzinho</h1>
-    <p class="intro-text">
-        Clique nas imagens para descobrir mensagens especiais para você. Cada imagem guarda uma surpresa!
-    </p>
 
-    <div class="image-container">
-        <video autoplay loop muted playsinline>
-            <source src="gif01.mp4" type="video/mp4">
-        </video>
-        <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
-    </div>
+    <!-- Contêiner da página interna -->
+    <div class="page-container">
+        <h1>Meu Amorzinho</h1>
+        <p class="intro-text">
+            Clique nas imagens para descobrir mensagens especiais para você. Cada imagem guarda uma surpresa!
+        </p>
 
-    <div class="image-container">
-        <video autoplay loop muted playsinline>
-            <source src="gif02.mp4" type="video/mp4">
-        </video>
-        <div class="text">Seu caráter e personalidade são únicos!</div>
-    </div>
+        <div class="image-container">
+            <video autoplay loop muted playsinline>
+                <source src="gif01.mp4" type="video/mp4">
+            </video>
+            <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor01.jpeg" alt="Imagem 1">
-        <div class="text">Seus olhos são como estrelas, iluminando tudo ao redor com um brilho único e hipnotizante.</div>
-    </div>
+        <div class="image-container">
+            <video autoplay loop muted playsinline>
+                <source src="gif02.mp4" type="video/mp4">
+            </video>
+            <div class="text">Seu caráter e personalidade são únicos!</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor02.jpeg" alt="Imagem 2">
-        <div class="text">Você é o detalhe que faltava na minha vida.</div>
-    </div>
+        <div class="image-container">
+            <img src="imgamor01.jpeg" alt="Imagem 1">
+            <div class="text">Seus olhos são como estrelas, iluminando tudo ao redor com um brilho único e hipnotizante.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor03.jpeg" alt="Imagem 3">
-        <div class="text">Nos seus olhos, encontrei meu lar.</div>
-    </div>
+        <div class="image-container">
+            <img src="imgamor02.jpeg" alt="Imagem 2">
+            <div class="text">Você é o detalhe que faltava na minha vida.</div>
+        </div>
 
-    <div class="image-container">
-        <img src="imgamor04.jpeg" alt="Imagem 4">
-        <div class="text">Ser incrível parece tão natural para você.</div>
+        <div class="image-container">
+            <img src="imgamor03.jpeg" alt="Imagem 3">
+            <div class="text">Nos seus olhos, encontrei meu lar.</div>
+        </div>
+
+        <div class="image-container">
+            <img src="imgamor04.jpeg" alt="Imagem 4">
+            <div class="text">Ser incrível parece tão natural para você.</div>
+        </div>
     </div>
 
     <script>
@@ -138,5 +148,6 @@
             });
         });
     </script>
+
 </body>
 </html>
