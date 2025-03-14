@@ -7,52 +7,53 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
 
-        .swiper {
-            width: 100%;
-            height: 100vh; /* O carrossel ocupa toda a altura da tela */
-        }
+.swiper {
+    width: 100%;
+    height: 100vh; /* Sempre ocupar a tela inteira */
+}
 
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.swiper-slide iframe {
+    width: 100%;
+    height: 100vh; /* Ocupar toda a altura da tela */
+    border: none;
+}
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            overflow: hidden;
-        }
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+    .swiper {
+        height: 100vh; /* Mantém a altura total */
+    }
+    .swiper-slide iframe {
+        height: 100vh; /* O iframe também preenche toda a tela */
+    }
+    .swiper-button-next, .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+}
 
-        /* Ajuste para garantir que o iframe se comporte de forma responsiva */
-        @media (max-width: 768px) {
-            iframe {
-                height: 100vh; /* Garante que o iframe ocupe toda a altura da tela em dispositivos móveis */
-            }
-        }
     </style>
 </head>
 <body>
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <iframe src="page1.html" onload="ajustarAlturaIframe(this)"></iframe>
+                <iframe src="page1.html"></iframe>
             </div>
             <div class="swiper-slide">
-                <iframe src="page2.html" onload="ajustarAlturaIframe(this)"></iframe>
+                <iframe src="page2.html"></iframe>
             </div>
             <div class="swiper-slide">
-                <iframe src="page3.html" onload="ajustarAlturaIframe(this)"></iframe>
+                <iframe src="page3.html"></iframe>
             </div>
             <div class="swiper-slide">
-                <iframe src="page4.html" onload="ajustarAlturaIframe(this)"></iframe>
+                <iframe src="page4.html"></iframe>
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -62,13 +63,6 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        // Função para ajustar a altura do iframe com base no conteúdo da página interna
-        function ajustarAlturaIframe(iframe) {
-            const conteudo = iframe.contentWindow.document.body;
-            const altura = conteudo.scrollHeight;
-            iframe.style.height = altura + 'px';
-        }
-
         const swiper = new Swiper('.swiper', {
             loop: true,
             pagination: {
@@ -79,18 +73,6 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            on: {
-                slideChange: () => {
-                    const currentIframe = document.querySelector('.swiper-slide-active iframe');
-                    ajustarAlturaIframe(currentIframe);
-                }
-            }
-        });
-
-        // Ajuste inicial ao carregar a página
-        window.addEventListener('load', () => {
-            const firstIframe = document.querySelector('.swiper-slide iframe');
-            ajustarAlturaIframe(firstIframe);
         });
     </script>
 </body>
