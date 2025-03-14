@@ -5,85 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu amorzinho eh perfeita</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9e3e3;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        h1 {
-            font-size: 1.6em;
-            color: #d32f2f;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-        .intro-text {
-            font-size: 1.0em;
-            color: #d32f2f;
-            text-align: center;
-            margin-bottom: 20px;
-            max-width: 80%;
-        }
-        .image-container {
-            width: 300px; /* Largura fixa */
-            height: 200px; /* Altura fixa */
-            margin: 10px 0;
-            position: relative;
-            cursor: pointer;
-            perspective: 1000px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 15px; /* Bordas arredondadas */
-        }
-        .image-container img,
-        .image-container video {
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            display: block;
-            transition: transform 0.6s, opacity 0.6s;
-            backface-visibility: hidden;
-            object-fit: cover; /* Garante que a imagem/video cubra o contêiner */
-        }
-        .image-container .text {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #d32f2f;
-            color: white;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-left: 10px;
-            padding-right: 10px;
-            font-size: 0.8em;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-            transition: transform 0.6s;
-            opacity: 0;
-        }
-        .image-container.flipped img,
-        .image-container.flipped video {
-            transform: rotateY(180deg);
-            opacity: 0;
-        }
-        .image-container.flipped .text {
-            transform: rotateY(0deg);
-            opacity: 1;
-        }
+       * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9e3e3;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow-x: hidden; /* Impede o corte da última imagem */
+    }
+
+    h1 {
+        font-size: 1.6em;
+        color: #d32f2f;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .intro-text {
+        font-size: 1.0em;
+        color: #d32f2f;
+        text-align: center;
+        margin-bottom: 20px;
+        max-width: 80%;
+    }
+
+    .image-container {
+        width: 300px;
+        height: 200px;
+        margin: 10px 0;
+        position: relative;
+        cursor: pointer;
+        perspective: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .image-container img,
+    .image-container video {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        display: block;
+        transition: transform 0.6s, opacity 0.6s;
+        backface-visibility: hidden;
+        object-fit: cover;
+    }
+
+    .image-container .text {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #d32f2f;
+        color: white;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        font-size: 1em;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+        transition: transform 0.6s;
+        opacity: 0;
+        word-wrap: break-word; /* Evita que o texto vaze */
+        overflow: auto; /* Garante que o texto fique dentro do container */
+        max-width: 90%; /* Limita a largura do texto */
+    }
+
+    .image-container.flipped img,
+    .image-container.flipped video {
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+
+    .image-container.flipped .text {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
     </style>
 </head>
 <body>
@@ -97,7 +112,7 @@
         <video autoplay loop muted playsinline>
             <source src="gif01.mp4" type="video/mp4">
         </video>
-        <div class="text">A beleza externa é incrível, <br>mas sua essência é ainda mais encantadora.</div>
+        <div class="text">A beleza externa é incrível, mas sua essência é ainda mais encantadora.</div>
     </div>
 
     <div class="image-container">
@@ -119,12 +134,12 @@
 
     <div class="image-container">
         <img src="imgamor03.jpeg" alt="Imagem 3">
-        <div class="text">Nos seus olhos, <br>encontrei meu lar.</div>
+        <div class="text">Nos seus olhos, encontrei meu lar.</div>
     </div>
 
     <div class="image-container">
         <img src="imgamor04.jpeg" alt="Imagem 4">
-        <div class="text">Ser incrível parece tão natural <br>para você.</div>
+        <div class="text">Ser incrível parece tão natural para você.</div>
     </div>
 
     <script>
