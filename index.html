@@ -10,24 +10,32 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         .swiper {
             width: 100%;
-            height: auto;
+            height: 100vh; /* O carrossel ocupa toda a altura da tela */
         }
 
         .swiper-slide {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 0;
         }
 
-        .content {
-            width: 90%;
-            max-width: 400px;
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+        }
+
+        /* Ajuste para garantir que o iframe se comporte de forma responsiva */
+        @media (max-width: 768px) {
+            iframe {
+                height: 100vh; /* Garante que o iframe ocupe toda a altura da tela em dispositivos móveis */
+            }
         }
     </style>
 </head>
@@ -35,34 +43,16 @@
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <div class="content">
-                    <!-- Conteúdo da página 1 -->
-                    <h1>Página 1</h1>
-                    <p>Conteúdo especial pra você ❤️</p>
-                </div>
+                <iframe src="page1.html" onload="ajustarAlturaIframe(this)"></iframe>
             </div>
             <div class="swiper-slide">
-                <div class="content">
-                    <!-- Conteúdo da página 2 -->
-                    <h1>Página 2</h1>
-                    <p>Você é perfeita, meu amorzinho! 💖</p>
-                </div>
+                <iframe src="page2.html" onload="ajustarAlturaIframe(this)"></iframe>
             </div>
             <div class="swiper-slide">
-                <div class="content">
-                    <!-- Conteúdo da página 3 (a que estava cortando) -->
-                    <h1>Página 3</h1>
-                    <p>Nos seus olhos eu me perco... 🥹</p>
-                    <img src="imgamor03.jpeg" width="100%">
-                </div>
+                <iframe src="page3.html" onload="ajustarAlturaIframe(this)"></iframe>
             </div>
             <div class="swiper-slide">
-                <div class="content">
-                    <!-- Conteúdo da página 4 -->
-                    <h1>Página 4</h1>
-                    <p>Ser incrível é natural pra você. 😍</p>
-                    <img src="imgamor04.jpeg" width="100%">
-                </div>
+                <iframe src="page4.html" onload="ajustarAlturaIframe(this)"></iframe>
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -72,6 +62,13 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
+        // Função para ajustar a altura do iframe com base no conteúdo da página interna
+        function ajustarAlturaIframe(iframe) {
+            const conteudo = iframe.contentWindow.document.body;
+            const altura = conteudo.scrollHeight;
+            iframe.style.height = altura + 'px';
+        }
+
         const swiper = new Swiper('.swiper', {
             loop: true,
             pagination: {
@@ -82,6 +79,18 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            on: {
+                slideChange: () => {
+                    const currentIframe = document.querySelector('.swiper-slide-active iframe');
+                    ajustarAlturaIframe(currentIframe);
+                }
+            }
+        });
+
+        // Ajuste inicial ao carregar a página
+        window.addEventListener('load', () => {
+            const firstIframe = document.querySelector('.swiper-slide iframe');
+            ajustarAlturaIframe(firstIframe);
         });
     </script>
 </body>
