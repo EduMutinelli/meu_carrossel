@@ -10,36 +10,60 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .swiper {
             width: 100%;
-            height: 100vh; /* Ocupa a tela inteira */
+            height: auto;
         }
 
         .swiper-slide {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 20px;
-            overflow-y: auto; /* Permite rolar se o conteúdo for maior */
+            align-items: center;
+            padding: 20px 0;
         }
 
-        iframe {
-            width: 90%; /* Largura do iframe */
-            max-width: 400px; /* Limite para não ficar muito grande */
-            border: none;
+        .content {
+            width: 90%;
+            max-width: 400px;
         }
     </style>
 </head>
 <body>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><iframe src="page1.html" onload="ajustarAlturaIframe(this)"></iframe></div>
-            <div class="swiper-slide"><iframe src="page2.html" onload="ajustarAlturaIframe(this)"></iframe></div>
-            <div class="swiper-slide"><iframe src="page3.html" onload="ajustarAlturaIframe(this)"></iframe></div>
-            <div class="swiper-slide"><iframe src="page4.html" onload="ajustarAlturaIframe(this)"></iframe></div>
+            <div class="swiper-slide">
+                <div class="content">
+                    <!-- Conteúdo da página 1 -->
+                    <h1>Página 1</h1>
+                    <p>Conteúdo especial pra você ❤️</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="content">
+                    <!-- Conteúdo da página 2 -->
+                    <h1>Página 2</h1>
+                    <p>Você é perfeita, meu amorzinho! 💖</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="content">
+                    <!-- Conteúdo da página 3 (a que estava cortando) -->
+                    <h1>Página 3</h1>
+                    <p>Nos seus olhos eu me perco... 🥹</p>
+                    <img src="imgamor03.jpeg" width="100%">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="content">
+                    <!-- Conteúdo da página 4 -->
+                    <h1>Página 4</h1>
+                    <p>Ser incrível é natural pra você. 😍</p>
+                    <img src="imgamor04.jpeg" width="100%">
+                </div>
+            </div>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
@@ -58,19 +82,7 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            on: {
-                slideChange: () => {
-                    const currentIframe = document.querySelector('.swiper-slide-active iframe');
-                    ajustarAlturaIframe(currentIframe);
-                }
-            }
         });
-
-        function ajustarAlturaIframe(iframe) {
-            const conteudo = iframe.contentWindow.document.body;
-            const altura = conteudo.scrollHeight;
-            iframe.style.height = altura + 'px';
-        }
     </script>
 </body>
 </html>
