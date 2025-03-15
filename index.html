@@ -1,76 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site pro meu Amor</title>
     <style>
-        html, body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #content {
-            width: 100vw;
-            min-height: 100dvh; /* Corrige o corte no celular */
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
         }
 
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Botões de navegação */
         .nav-button {
-            position: fixed;
+            position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
+            background: rgba(100, 100, 100, 0.5);
+            color: white;
             border: none;
-            font-size: 40px;
+            padding: 15px;
             cursor: pointer;
-            color: black;
+            font-size: 24px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        #prev {
-            left: 10px;
-        }
+        #prev { left: 10px; }
+        #next { right: 10px; }
 
-        #next {
-            right: 10px;
+        /* Ajuste para dispositivos móveis */
+        @media (max-width: 768px) {
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
         }
-
     </style>
 </head>
 <body>
-    <div id="content"></div>
 
-    <button id="prev" class="nav-button">&#9664;</button>
-    <button id="next" class="nav-button">&#9654;</button>
+    <div class="container">
+        <button id="prev" class="nav-button">◀</button>
+        <iframe id="page-frame" src="page1.html"></iframe>
+        <button id="next" class="nav-button">▶</button>
+    </div>
 
     <script>
         const pages = ["page1.html", "page2.html", "page3.html", "page4.html"];
-        let currentPageIndex = 0;
+        let currentIndex = 0;
+        const iframe = document.getElementById("page-frame");
 
-        const content = document.getElementById("content");
-        const prevButton = document.getElementById("prev");
-        const nextButton = document.getElementById("next");
-
-        function loadPage(index) {
-            fetch(pages[index])
-                .then(response => response.text())
-                .then(html => {
-                    content.innerHTML = html;
-                });
-        }
-
-        prevButton.addEventListener("click", () => {
-            currentPageIndex = (currentPageIndex - 1 + pages.length) % pages.length;
-            loadPage(currentPageIndex);
+        document.getElementById("prev").addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                iframe.src = pages[currentIndex];
+            }
         });
 
-        nextButton.addEventListener("click", () => {
-            currentPageIndex = (currentPageIndex + 1) % pages.length;
-            loadPage(currentPageIndex);
+        document.getElementById("next").addEventListener("click", () => {
+            if (currentIndex < pages.length - 1) {
+                currentIndex++;
+                iframe.src = pages[currentIndex];
+            }
         });
-
-        loadPage(currentPageIndex);
     </script>
+
 </body>
 </html>
