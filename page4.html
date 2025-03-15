@@ -1,34 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Te amo meu bem</title>
     <style>
-        body {
-            background: url('https://imgur.com/nVVaZgV.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Press Start 2P', cursive;
-            text-align: center;
-            padding-top: 50px;
-            color: #fff;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            background: url('https://imgur.com/nVVaZgV.jpg') no-repeat center center;
+            background-size: cover;
+            font-family: 'Press Start 2P', cursive, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
         h1 {
             color: #ff6f91;
             font-size: 2.5em;
-            margin: 20px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
         }
+
         p {
             color: #ff9aa2;
             font-size: 1.2em;
-            margin: 10px;
+            margin-bottom: 20px;
         }
+
         #hello-kitty {
-            margin-top: 50px;
             width: 80%;
             max-width: 300px;
             height: auto;
+            filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
         }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
@@ -44,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Te amo meu Amor!</h1>
+    <h1>Te amo, meu Amor! 💖</h1>
     <img id="hello-kitty" src="https://media.tenor.com/rRCSgVt0_-AAAAAi/hello-kitty.gif" alt="Hello Kitty GIF">
 </body>
 </html>

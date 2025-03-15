@@ -1,11 +1,10 @@
-*{
+* {
 	box-sizing: border-box;
 }
 
-h1,
-p {
+h1, p {
 	font-family: "Quicksand";
-  font-optical-sizing: auto;
+	font-optical-sizing: auto;
 }
 
 h1 {
@@ -13,16 +12,18 @@ h1 {
 }
 
 body {
-	margin: 0px;
+	margin: 0;
 }
 
-.instruction{
+.instruction {
 	position: absolute;
-	font-size: 1.0rem;
+	font-size: 1rem;
 	color: rgba(255, 0, 0, 0.554);
 	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: center;
+	width: 90%;
 }
 
 .container {
@@ -30,6 +31,9 @@ body {
 	width: 100%;
 	height: 100vh;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .heart {
@@ -44,93 +48,69 @@ body {
 }
 
 .heart > img {
-	width: 50px;
+	width: 60px;
 	height: auto;
-
-	animation-name: beat;
-	animation-duration: 2s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
-	animation-play-state: running;
+	animation: beat 2s ease-in-out infinite;
 }
 
 .message {
 	padding: 25px;
 	background-color: #eee;
 	font-family: "Quicksand", serif;
-  font-optical-sizing: auto;
+	font-optical-sizing: auto;
 	font-size: clamp(16px, 10vw, 17px);
 	text-align: justify;
 	line-height: 1.5em;
-	width: 80%;
-	max-width: 550px;
-	height: 78%;
+	width: 90%;
+	max-width: 500px;
+	height: 70%;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 0;
-
-	animation-name: openmsg;
-	animation-duration: 2s;
-	animation-timing-function: linear;
-	animation-play-state: paused;
-	animation-fill-mode: forwards;
+	animation: openmsg 2s linear paused forwards;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 	border-radius: 5px;
-	overflow: scroll;
+	overflow-y: auto;
 	scrollbar-width: none;
 }
- 
-.message .sincere{
+
+.message .sincere {
 	text-align: left;
-	font-family: "Cinzel, serif";
+	font-family: "Cinzel", serif;
 	font-size: 14px;
 	line-height: 1.2em;
 }
 
-.message .sincere p{
+.message .sincere p {
 	margin: 0;
 }
 
 @keyframes beat {
-	0% {
-		width: 50px;
-	}
-	25% {
-		width: 58px;
-	}
-	30% {
-		width: 50px;
-	}
-	50% {
-		width: 45px;
-	}
-	60% {
-		width: 50px;
-	}
-	75% {
-		width: 58px;
-	}
-	100% {
-		width: 50px;
-	}
+	0% { width: 60px; }
+	25% { width: 68px; }
+	30% { width: 60px; }
+	50% { width: 55px; }
+	60% { width: 60px; }
+	75% { width: 68px; }
+	100% { width: 60px; }
 }
 
 @keyframes openmsg {
 	0% {
-		height: 0px;
-		padding: 0px 20px;
+		height: 0;
+		padding: 0 20px;
 	}
 	100% {
-		height: 75%;
-		padding: 20px 20px;
+		height: 70%;
+		padding: 20px;
 	}
 }
 
 @keyframes heartMove {
 	0% {
-		top: 50%
+		top: 50%;
 	}
 	100% {
 		top: 85%;
@@ -153,8 +133,8 @@ body {
 }
 
 .closed {
-	height: 0px;
-	padding: 0px 20px;
+	height: 0;
+	padding: 0 20px;
 }
 
 .bottom {
@@ -162,31 +142,52 @@ body {
 }
 
 .openHer {
-	animation-name: heartMove;
-	animation-duration: 2s;
-	animation-timing-function: linear;
-	animation-play-state: running;
-	animation-fill-mode: forwards;
+	animation: heartMove 2s linear forwards;
 }
 
 .closeHer {
-	animation-name: heartMove;
-	animation-duration: 2s;
-	animation-timing-function: linear;
-	animation-play-state: running;
-	animation-direction: reverse;
-	animation-fill-mode: forwards;
+	animation: heartMove 2s linear reverse forwards;
 }
 
 .beating > img {
-	animation-name: beat;
-	animation-duration: 2s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
-	animation-play-state: running;
+	animation: beat 2s ease-in-out infinite;
 }
 
 .openedHer {
 	top: 85%;
 	transform: translate(-50%, 0);
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+	.message {
+		width: 95%;
+		height: 75%;
+		font-size: 15px;
+	}
+
+	.heart > img {
+		width: 50px;
+	}
+
+	.instruction {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.message {
+		width: 90%;
+		height: 80%;
+		font-size: 14px;
+	}
+
+	.heart > img {
+		width: 45px;
+	}
+
+	.instruction {
+		font-size: 0.85rem;
+		top: 35%;
+	}
 }

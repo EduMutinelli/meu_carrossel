@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site pro meu Amor</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -12,86 +13,73 @@
         }
 
         html, body {
-            width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .container {
+        .swiper {
             width: 100%;
             height: 100vh;
-            position: relative;
         }
 
-        iframe {
+        .swiper-slide iframe {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             border: none;
+            display: block;
         }
 
-        /* Botões de navegação */
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(100, 100, 100, 0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 24px;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #prev { left: 10px; }
-        #next { right: 10px; }
-
-        /* Ajuste para dispositivos móveis */
+        /* Responsividade */
         @media (max-width: 768px) {
-            .nav-button {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
+            .swiper {
+                height: 100vh;
+            }
+            
+            .swiper-slide iframe {
+                height: 100vh;
+            }
+            
+            .swiper-button-next, .swiper-button-prev {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .swiper-pagination {
+                bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <button id="prev" class="nav-button">◀</button>
-        <iframe id="page-frame" src="page1.html"></iframe>
-        <button id="next" class="nav-button">▶</button>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><iframe src="page1.html"></iframe></div>
+            <div class="swiper-slide"><iframe src="page2.html"></iframe></div>
+            <div class="swiper-slide"><iframe src="page3.html"></iframe></div>
+            <div class="swiper-slide"><iframe src="page4.html"></iframe></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        const pages = ["page1.html", "page2.html", "page3.html", "page4.html"];
-        let currentIndex = 0;
-        const iframe = document.getElementById("page-frame");
-
-        document.getElementById("prev").addEventListener("click", () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                iframe.src = pages[currentIndex];
-            }
-        });
-
-        document.getElementById("next").addEventListener("click", () => {
-            if (currentIndex < pages.length - 1) {
-                currentIndex++;
-                iframe.src = pages[currentIndex];
-            }
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
         });
     </script>
-
 </body>
 </html>
