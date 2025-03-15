@@ -4,76 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site pro meu Amor</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-.swiper {
-    width: 100%;
-    height: 100vh; /* Sempre ocupar a tela inteira */
-}
+        .iframe-container {
+            width: 100%;
+            height: 100vh;
+        }
 
-.swiper-slide iframe {
-    width: 100%;
-    height: 100vh; /* Ocupar toda a altura da tela */
-    border: none;
-}
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-/* Ajuste para dispositivos móveis */
-@media (max-width: 768px) {
-    .swiper {
-        height: 100vh; /* Mantém a altura total */
-    }
-    .swiper-slide iframe {
-        height: 100vh; /* O iframe também preenche toda a tela */
-    }
-    .swiper-button-next, .swiper-button-prev {
-        width: 40px;
-        height: 40px;
-    }
-}
+        .buttons {
+            position: fixed;
+            bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
     </style>
 </head>
 <body>
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <iframe src="page1.html"></iframe>
-            </div>
-            <div class="swiper-slide">
-                <iframe src="page2.html"></iframe>
-            </div>
-            <div class="swiper-slide">
-                <iframe src="page3.html"></iframe>
-            </div>
-            <div class="swiper-slide">
-                <iframe src="page4.html"></iframe>
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+    <div class="iframe-container">
+        <iframe id="page-frame" src="page1.html"></iframe>
     </div>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <div class="buttons">
+        <button id="prev">Anterior</button>
+        <button id="next">Próximo</button>
+    </div>
+
     <script>
-        const swiper = new Swiper('.swiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+        const pages = ["page1.html", "page2.html", "page3.html", "page4.html"];
+        let currentPageIndex = 0;
+
+        const iframe = document.getElementById("page-frame");
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+
+        function changePage(index) {
+            currentPageIndex = (index + pages.length) % pages.length;
+            iframe.src = pages[currentPageIndex];
+        }
+
+        prevButton.addEventListener("click", () => changePage(currentPageIndex - 1));
+        nextButton.addEventListener("click", () => changePage(currentPageIndex + 1));
     </script>
 </body>
 </html>
