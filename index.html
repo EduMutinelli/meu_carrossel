@@ -9,18 +9,12 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        .iframe-container {
+        #content {
             width: 100vw;
-            height: 100vh;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: none;
+            min-height: 100vh;
         }
 
         .nav-button {
@@ -45,9 +39,7 @@
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe id="page-frame" src="page1.html"></iframe>
-    </div>
+    <div id="content"></div>
 
     <button id="prev" class="nav-button">&#9664;</button>
     <button id="next" class="nav-button">&#9654;</button>
@@ -56,17 +48,29 @@
         const pages = ["page1.html", "page2.html", "page3.html", "page4.html"];
         let currentPageIndex = 0;
 
-        const iframe = document.getElementById("page-frame");
+        const content = document.getElementById("content");
         const prevButton = document.getElementById("prev");
         const nextButton = document.getElementById("next");
 
-        function changePage(index) {
-            currentPageIndex = (index + pages.length) % pages.length;
-            iframe.src = pages[currentPageIndex];
+        function loadPage(index) {
+            fetch(pages[index])
+                .then(response => response.text())
+                .then(html => {
+                    content.innerHTML = html;
+                });
         }
 
-        prevButton.addEventListener("click", () => changePage(currentPageIndex - 1));
-        nextButton.addEventListener("click", () => changePage(currentPageIndex + 1));
+        prevButton.addEventListener("click", () => {
+            currentPageIndex = (currentPageIndex - 1 + pages.length) % pages.length;
+            loadPage(currentPageIndex);
+        });
+
+        nextButton.addEventListener("click", () => {
+            currentPageIndex = (currentPageIndex + 1) % pages.length;
+            loadPage(currentPageIndex);
+        });
+
+        loadPage(currentPageIndex);
     </script>
 </body>
 </html>
