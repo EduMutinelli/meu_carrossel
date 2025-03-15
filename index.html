@@ -10,14 +10,10 @@
             padding: 0;
             height: 100%;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
         .iframe-container {
-            width: 100%;
+            width: 100vw;
             height: 100vh;
         }
 
@@ -27,17 +23,23 @@
             border: none;
         }
 
-        .buttons {
+        .nav-button {
             position: fixed;
-            bottom: 20px;
-            display: flex;
-            gap: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 40px;
+            cursor: pointer;
+            color: black;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
         }
 
     </style>
@@ -47,10 +49,8 @@
         <iframe id="page-frame" src="page1.html"></iframe>
     </div>
 
-    <div class="buttons">
-        <button id="prev">Anterior</button>
-        <button id="next">Próximo</button>
-    </div>
+    <button id="prev" class="nav-button">&#9664;</button>
+    <button id="next" class="nav-button">&#9654;</button>
 
     <script>
         const pages = ["page1.html", "page2.html", "page3.html", "page4.html"];
